@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 //		Scanner input = new Scanner(System.in);
 //		System.out.print("Enter a directory path: ");
@@ -12,17 +12,17 @@ public class Application {
 		String path = "C:\\Users\\Khalid\\Desktop\\222\\ics353\\olds";
 		File f = new File(path);
 		
-		Folder root = new Folder(f.getName());
+		Component root = new Folder(f.getName());
 		traverse(root, f, true);
 		System.out.println("Size: " + root.calculateSize() + "kb\n");
-		root.print();
+		root.print(0);
 		
 	}
 	
-	public static void traverse(Folder root, File f, boolean isFirst) {
+	public static void traverse(Component root, File f, boolean isFirst) throws Exception {
 		
 		if(f.isDirectory()) {
-			Folder folder = new Folder(f.getName());
+			Component folder = new Folder(f.getName());
 			
 			if(!isFirst) {
 				root.add(folder);
@@ -41,7 +41,9 @@ public class Application {
 			int index = name.lastIndexOf('.');
 			String extension = name.substring(index + 1);
 			
-			root.add(new MyFile(f.getName(), f.length()/1024, extension));
+			Component file = new MyFile(f.getName(), f.length()/1024, extension);
+			
+			root.add(file);
 		}
 		
 	}

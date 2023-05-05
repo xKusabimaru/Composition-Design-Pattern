@@ -37,10 +37,6 @@ public class Folder implements Component {
 		return size;
 		
 	}
-	
-	public void print() {
-		print(0);
-	}
 
 	@Override
 	public void print(int depth) {

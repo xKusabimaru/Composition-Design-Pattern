@@ -15,12 +15,10 @@ public class MyFile implements Component {
 		return name;
 	}
 	
-	//@Override
 	public long getSize() {
 		return size;
 	}
 
-	//@Override
 	public String getExtension() {
 		return extension;
 	}
